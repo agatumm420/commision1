@@ -27,5 +27,5 @@ Tutaj są dwie możliwości:
 Wysyłasz: Nic (ale w adresie id usera!)
 Otrzymujesz: usera
 2) #### jeśli PUT:
-Wysyłasz: Nic (ale w adresie id usera!)
+Wysyłasz: 
 Otrzymujesz: usera
