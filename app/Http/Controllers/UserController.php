@@ -86,16 +86,21 @@ class UserController extends Controller
         // Validate input data
         $validatedData = $request->validate([
             'login' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'email' => 'nullable|string|email|max:255|unique:user2,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         // Update user data
         $user->login = $validatedData['login'];
-        $user->email = $validatedData['email'];
+
+        if ($request->has('email')) {
+            $user->email = $validatedData['email'];
+        }
+
         if ($request->has('password')) {
             $user->password = Hash::make($validatedData['password']);
         }
+
         $user->save();
 
         // Return success response
