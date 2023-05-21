@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_activations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('token');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('user_activations')) {
+            Schema::create('user_activations', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained();
+                $table->string('token');
+                $table->timestamps();
+            });
+        }
     }
 
 

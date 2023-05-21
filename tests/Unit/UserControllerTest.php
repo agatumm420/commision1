@@ -56,7 +56,7 @@ class UserControllerTest extends TestCase
 
     public function testUpdate()
     {
-        $user = User::factory()->create();
+        $user = User2::factory()->create();
 
         $updateData = [
             'login' => 'Updated Name',
