@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Backpack\CRUD\app\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +27,18 @@ Route::get('/test-db-connection', function () {
         return response()->json(['message' => 'Could not connect to the database: ' . $e->getMessage()], 500);
     }
 });
+Route::group([
+    'namespace' => 'Backpack\CRUD\app\Http\Controllers\Auth',
+    'middleware' => ['web'],
+], function () {
+    // Login Routes
+    Route::get('admin/login', [LoginController::class, 'showLoginForm'])->name('backpack.auth.login');
+    Route::post('admin/login', [LoginController::class, 'login'])->name('backpack.auth.login');
+    // Other authentication routes (register, reset password, etc.) can be added here
+});
+// web.php
+//Route::middleware(['guest'])->group(function () {
+//    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+//    Route::post('/login', 'Auth\LoginController@login');
+//});
+
