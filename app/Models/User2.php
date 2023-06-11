@@ -1,48 +1,37 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-/**
- * Class User2
- *
- * @property int $id
- * @property string $login
- * @property string $password
- * @property int $km
- * @property string $email
- *
- * @package App\Models
- */
-class User2 extends Model
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
+class User2 extends Model  implements AuthenticatableContract
 {
     use CrudTrait;
     use HasFactory;
-	protected $table = 'user2';
-	public $timestamps = false;
+    use Authenticatable;
 
-	protected $casts = [
-		'km' => 'int'
-	];
+    protected $table = 'user2';
+    public $timestamps = false;
 
-	protected $hidden = [
-		'password'
-	];
+    protected $casts = [
+        'km' => 'int'
+    ];
 
-	protected $fillable = [
-		'login',
-		'password',
-		'km',
-		'email',
+    protected $hidden = [
+        'password'
+    ];
+
+    protected $fillable = [
+        'login',
+        'password',
+        'km',
+        'email',
         'aktwn_u'
-	];
+    ];
+
     /**
      * Get the route key for the model.
      *
@@ -51,6 +40,22 @@ class User2 extends Model
     public function getRouteKeyName()
     {
         return 'id'; // your primary key
+    }
+
+    public function matches()
+    {
+        return $this->belongsToMany(Match::class, 'match_user', 'user2_id', 'match_id');
+    }
+
+
+    public function meczRuches()
+    {
+        return $this->belongsToMany(MeczRuch::class, 'mecz_ruch_user', 'user2_id', 'mecz_ruch_id');
+    }
+
+    public function meczWidzews()
+    {
+        return $this->belongsToMany(MeczWidzew::class, 'mecz_widzew_user', 'user2_id', 'mecz_widzew_id');
     }
 
 }

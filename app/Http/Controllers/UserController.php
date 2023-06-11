@@ -17,7 +17,33 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function login(Request $request)
+    {
+        $validatedData = $request->validate([
+            'login' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
+        ]);
 
+        $user = User2::where('login', $validatedData['login'])->first();
+
+        if (!$user || !Hash::check($validatedData['password'], $user->password)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid login credentials',
+            ], 401);
+        }
+
+        // Typically you would issue a token to the user at this point.
+        // You would need to implement this based on your authentication method
+        // (JWT, Passport, Sanctum, etc.)
+
+        return response()->json([
+            'status' => 'ok',
+            'message' => 'Login successful',
+            // 'token' => $token, // Assuming you issue a token and pass it to the user.
+            'user' => $user,
+        ]);
+    }
     public function index(Request $request)
     {
         $page = $request->query('page', 1);

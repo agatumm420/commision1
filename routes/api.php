@@ -16,20 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::post('/users/register', [UserController::class, 'register'])->name('user.register');
+Route::post('/users/login', [UserController::class, 'login'])->name('user.login'); // Here is the new route
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-//Route::view('/activate/{token}', 'activationLink')->name('activationLink');
 Route::post('/add-km/{user}', [KmController::class, 'add_km']);
+
 Route::get('/activate/{token}', [UserController::class, 'activate'])->name('user.activate');
 Route::view('/activation', 'activationLink')->name('activationLink');
-
-
-
 

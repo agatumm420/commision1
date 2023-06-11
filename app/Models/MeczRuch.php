@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Sezon $sezon
  * @property Druzyna $druzyna
- * @property Rozgrywki $rozgrywki
+ * @property RozgrywkiW $rozgrywki
  * @property Collection|UserMeczRuch[] $user_mecz_ruches
  *
  * @package App\Models

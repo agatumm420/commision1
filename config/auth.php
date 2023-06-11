@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'user2' => [  // new custom guard for User2 model
+            'driver' => 'session',
+            'provider' => 'user2s',
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'user2s' => [  // new custom provider for User2 model
+            'driver' => 'eloquent',
+            'model' => \App\Models\User2::class,
         ],
 
         // 'users' => [

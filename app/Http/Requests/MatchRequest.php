@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class  MeczRuchRequest extends FormRequest
+class MatchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +26,12 @@ class  MeczRuchRequest extends FormRequest
     public function rules()
     {
         return [
-            'data_mr' => 'required|date',
-            'wynik_mr' => 'required|string|max:255',
-            'km_mr' => 'required|integer',
-            'link_mr' => 'nullable|string|max:255',
-            'id_se' => 'required|exists:sezon,id_se',
-            'id_dr' => 'required|exists:druzyna,id_dr',
-            'id_ro' => 'required|exists:rozgrywkiW,id_ro',
+            'match_date' => 'required|date',
+            'score' => 'required|string',
+            'team1_id' => 'required|integer|exists:teams,id',
+            'team2_id' => 'required|integer|exists:teams,id',
+            'link' => 'nullable|string',
+            'rozgrywki_w_id' => 'required|integer|exists:rozgrywkiW,id_ro' // assuming the table name for RozgrywkiW model is 'rozgrywkiws'
         ];
     }
 

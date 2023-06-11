@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LicznikController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Backpack\CRUD\app\Http\Controllers\Auth\LoginController;
@@ -16,9 +17,15 @@ use Backpack\CRUD\app\Http\Controllers\Auth\LoginController;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+
+Route::post('/login', [LicznikController::class, 'login']);
+Route::get('/licznik', [LicznikController::class, 'licznik'])->middleware('auth.user2');
+
 Route::get('/test-db-connection', function () {
     try {
         DB::connection()->getPdo();

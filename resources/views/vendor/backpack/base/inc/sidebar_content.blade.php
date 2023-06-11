@@ -8,3 +8,6 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('druzyna') }}"><i class="nav-icon la la-people-carry"></i> Druzyny</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('rozgrywki_w') }}"><i class="nav-icon la la-hand-point-up"></i> Rozgrywki</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('sezon') }}"><i class="nav-icon la la-leaf"></i> Sezony</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('team') }}'><i class='nav-icon la la-people-carry'></i> Teams</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('match') }}'><i class='nav-icon la la-fist-raised'></i> Matches</a></li>
