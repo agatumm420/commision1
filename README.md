@@ -13,19 +13,60 @@ Wszystkie enpointy znajdziesz w  /routes/api.php. Wyglądają tak:
 ## Teraz rozpiszę jakie request przyjmuje jaki endpoint:
 
 ### /api/users:
-Wysyłasz: NIC to jest GET zwykły
-Otrzymujesz: Wszystkich użytkowników 10 na strone (paginacja)
+**Wysyłasz**: NIC to jest GET zwykły
+
+**Otrzymujesz**: Wszystkich użytkowników 10 na strone (paginacja)
 ### /api/users:
-Wysyłasz: NIC to jest GET zwykły
-Otrzymujesz: Wszystkich użytkowników 10 na strone (paginacja)
+**Wysyłasz**: NIC to jest GET zwykły
+
+**Otrzymujesz**: Wszystkich użytkowników 10 na strone (paginacja)
 ### /api/users/register:
-Wysyłasz: Login, email, hasło
-Otrzymujesz: Status i usera
-### /users/{id} albo /api/users/{user}:
-Tutaj są dwie możliwości:
+**Wysyłasz**: (w jsonie) 
+
+    'login':'przykladowy.login',
+    'email':'przykladowy@email.com',
+    'hasło':'przykladoweHaslo'
+
+**Otrzymujesz**: Status i usera
+###  /api/users/{user}:
+Tutaj są 3 możliwości:
 1) #### jeśli GET:
-Wysyłasz: Nic (ale w adresie id usera!)
-Otrzymujesz: usera
+**Wysyłasz***: Nic (ale w adresie id usera!)
+
+**Otrzymujesz**: usera
 2) #### jeśli PUT:
-Wysyłasz: 
-Otrzymujesz: usera
+--przez to można zmienić/odzyskać hasło --- 
+
+**Wysyłasz**: (w jsonie):
+        
+    login : przykladowy.login
+    password: nowe.hasło
+    email: nowy.email
+
+
+
+**Otrzymujesz**: usera
+
+3) #### jeśli DELETE: 
+   (w adresie jest id usera)
+
+**Wysyłasz**: nic
+**Odbierasz**   :
+    
+    'message':'User deleted'
+### /add-km/{user}
+dodaje km uzytkownikowi
+
+**Wysyłasz**: (w jsonie)
+    
+    'street':'ul.Przypadkowa',
+    'house':'4',
+    'zip_code': '31-158',
+    'city':'Przypadkowo'
+
+**Otrzymujesz**: (json)
+
+    'km': '666'
+    
+
+
