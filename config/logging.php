@@ -57,6 +57,10 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+        'yourCustomChannel' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/yourCustomLogFile.log'),
+        ],
 
         'single' => [
             'driver' => 'single',

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LicznikController;
+use App\Http\Controllers\PasswordResetController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Backpack\CRUD\app\Http\Controllers\Auth\LoginController;
@@ -43,6 +44,9 @@ Route::group([
     Route::post('admin/login', [LoginController::class, 'login'])->name('backpack.auth.login');
     // Other authentication routes (register, reset password, etc.) can be added here
 });
+Route::get('/forgot-password', [PasswordResetController::class, 'showForgotPasswordForm']);
+Route::get('/reset-password', [PasswordResetController::class, 'showResetPasswordForm']);
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
 // web.php
 //Route::middleware(['guest'])->group(function () {
 //    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

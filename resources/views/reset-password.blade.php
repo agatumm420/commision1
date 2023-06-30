@@ -4,46 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Login</title>
     <style>
         body {
             background-color: #f8f9fa;
         }
-        .login-container {
+        .reset-container {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .login-form {
+        .reset-form {
             width: 300px;
         }
-        .login-form input {
+        .reset-form input {
             margin-bottom: 15px;
         }
     </style>
 </head>
 
 <body>
-<div class="login-container">
-    <form action="{{ url('/login') }}" method="post" class="login-form">
+<div class="reset-container">
+    <form action="{{ url('/api/reset-password') }}" method="post" class="reset-form">
         @csrf
+        <input type="hidden" name="token" value="{{ $token }}">
         <div class="mb-3">
-            <input type="text" name="login" class="form-control" placeholder="Login" required>
+            <label for="new_password" class="form-label">New Password:</label>
+            <input type="password" name="new_password" class="form-control" id="new_password" required>
         </div>
         <div class="mb-3">
-            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <label for="confirm_password" class="form-label">Confirm Password:</label>
+            <input type="password" name="confirm_password" class="form-control" id="confirm_password" required>
         </div>
-        <div class="d-grid mb-2">
-            <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-        <div class="text-center">
-            <a href="/forgot-password">Forgot Password?</a>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Reset Password</button>
         </div>
     </form>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

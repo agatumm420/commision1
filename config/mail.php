@@ -36,13 +36,38 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'host' => env('MAIL_HOST', 'licznik.wyjazdowo.eu'),
+            'port' => env('MAIL_PORT', 465),
+            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+//            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+//            'dkim_domain' => 'licznik.wyjazdowo.eu',
+//            'dkim_selector' => 'default',
+//            'dkim_private_key' => '<<<PRIVATE_KEY
+//MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5gJDHoc3LHzIgSnzdHXjRtXfpvr8ZyPwzCmqL2oprzoV4jPqo36z2jwdPpRetigx0vg68svTZAvc+NuQMDDtEGGOCIuOVIbmPeB55VBHJ2Kcmtz4uKlj68yWG4UvXTkGOaG/vwfBxzkrLVGgCvQL93DNo9Fh1O5hXMyuaAzeuAf1Z0iILyHegtgioGvKGAGT
+//n+ge4fbDUBt3dQLNQbIn/6Rz9MC8O2MleI39MFovwCIFN3t3fx0g5OOkq1fFjpU4zYrpMtquUNZv5wekEIBxEKvwjowMTqTyQ3Pv/zau22g0itvyu48W3cttv4T642NuDdBH0hC/nbUyx1/e29qQQIDAQAB;
+//PRIVATE_KEY',
+//            'spf' => [
+//                'enabled' => true,
+//                'strict' => false,
+//                'domains' => [
+//                    'licznik.wyjazdowo.eu',
+//                ],
+//                'include' => [
+//                    'v=spf1 +a +mx +ip4:128.204.219.231 include:v=spf1 +a +mx +ip4:128.204.219.231 include:_spf.netmark.pl ~all',
+//                ],
+              //  ]
+
+        ],
+        'pop3' => [
+            'driver' => 'pop3',
+            'host' => 'mail.wyjazdowo.eu',
+            'port' => 110,
+            'username' => 'support@licznik.wyjazdowo.eu',
+            'password' => 'admin123!',
+            'encryption' => 'ssl',
         ],
 
         'ses' => [

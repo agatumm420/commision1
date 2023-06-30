@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KmController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::put('/users/{user}', [UserController::class, 'update'])->name('users.upda
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/add-km/{user}', [KmController::class, 'add_km']);
-
+Route::post('/send-reset-link', [PasswordResetController::class, 'sendResetLink']);
 Route::get('/activate/{token}', [UserController::class, 'activate'])->name('user.activate');
 Route::view('/activation', 'activationLink')->name('activationLink');
 

@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
+use Swift_TransportException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -17,6 +19,18 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+    public function report(Throwable $exception)
+    {
+        if ($exception instanceof Swift_TransportException) {
+            // customize your reporting here, for example:
+            Log::error($exception->getMessage());
+            Log::channel('yourCustomChannel')->error($exception->getMessage());
+            // or send an email, or anything else you like
+        }
+
+        parent::report($exception);
+    }
+
 
     /**
      * Register the exception handling callbacks for the application.
