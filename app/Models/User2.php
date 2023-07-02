@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
-class User2 extends Model  implements AuthenticatableContract
+use Illuminate\Notifications\Notifiable;
+class User2 extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -41,7 +42,10 @@ class User2 extends Model  implements AuthenticatableContract
     {
         return 'id'; // your primary key
     }
-
+    public function getAuthPassword()
+    {
+        return $this->password; // Assuming your password field is named 'user_password'
+    }
     public function matches()
     {
         return $this->belongsToMany(Match::class, 'match_user', 'user2_id', 'match_id');

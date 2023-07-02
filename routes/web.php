@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 
 Route::post('/login', [LicznikController::class, 'login']);
-Route::get('/licznik', [LicznikController::class, 'licznik'])->middleware('auth.user2');
+Route::get('/licznik', [LicznikController::class, 'licznik']);
 
 Route::get('/test-db-connection', function () {
     try {

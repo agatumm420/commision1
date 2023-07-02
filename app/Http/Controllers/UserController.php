@@ -26,7 +26,7 @@ class UserController extends Controller
 
         $user = User2::where('login', $validatedData['login'])->first();
 
-        if (!$user || !Hash::check($validatedData['password'], $user->password)) {
+        if (!$user || !md5($validatedData['password']==$user->password)) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Invalid login credentials',
@@ -124,7 +124,7 @@ class UserController extends Controller
         }
 
         if ($request->has('password')) {
-            $user->password = Hash::make($validatedData['password']);
+            $user->password = md5($validatedData['password']);
         }
 
         $user->save();

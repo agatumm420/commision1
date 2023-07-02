@@ -10,21 +10,24 @@ class Match extends Model
     protected $table = 'matches';
     protected $primaryKey = 'id';
 
-    protected $casts = [
-        'match_date' => 'datetime',
-        'team1_id' => 'int',
-        'team2_id' => 'int',
-        'rozgrywki_w_id' => 'int' // assuming the name of the field is rozgrywki_w_id
-    ];
-
     protected $fillable = [
         'match_date',
         'score',
         'team1_id',
         'team2_id',
         'link',
-        'rozgrywki_w_id' // add this field to the fillable array
+        'rozgrywki_w_id',
+        'id_se' // added the new column
     ];
+
+    protected $casts = [
+        'match_date' => 'datetime',
+        'team1_id' => 'int',
+        'team2_id' => 'int',
+        'rozgrywki_w_id' => 'int',
+        'id_se' => 'int' // cast the new column to int
+    ];
+
 
     public function team1()
     {
@@ -34,6 +37,11 @@ class Match extends Model
     {
         return $this->belongsToMany(User2::class, 'match_user', 'match_id', 'user2_id');
     }
+    public function sezon()
+    {
+        return $this->belongsTo(Sezon::class, 'id_se');
+    }
+
 
     public function team2()
     {

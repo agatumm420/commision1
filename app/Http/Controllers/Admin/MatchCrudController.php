@@ -8,6 +8,8 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use App\Models\Match;
 use App\Models\Team;
 use App\Models\RozgrywkiW;
+use App\Models\Sezon;
+
 
 class MatchCrudController extends CrudController
 {
@@ -28,8 +30,11 @@ class MatchCrudController extends CrudController
         CRUD::column('score')->label('wynik');
         CRUD::column('team1_id')->label('Drużyna 1')->type('select')->entity('team1')->attribute('name');
         CRUD::column('team2_id')->label('Drużyna 2')->type('select')->entity('team2')->attribute('name');
+
+
 //        CRUD::column('link');
         CRUD::column('rozgrywki_w_id')->label('Klasa')->type('select')->entity('rozgrywkiW')->attribute('nazwa_ro');
+        CRUD::column('id_se')->label('Sezon')->type('select')->entity('sezon')->attribute('sezon_se');
         // assuming RozgrywkiW has a name attribute
     }
 
@@ -43,6 +48,8 @@ class MatchCrudController extends CrudController
         CRUD::field('team2_id')->label('Drużyna 2')->type('select2')->entity('team2')->attribute('name')->model(Team::class);
         CRUD::field('link');
         CRUD::field('rozgrywki_w_id')->label('Klasa')->type('select2')->entity('rozgrywkiW')->attribute('nazwa_ro')->model(RozgrywkiW::class);
+        CRUD::field('id_se')->label('Sezon')->type('select2')->entity('sezon')->attribute('sezon_se')->model(Sezon::class);
+
         // assuming RozgrywkiW has a name attribute
     }
 

@@ -28,7 +28,7 @@ class MeczRuchCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MeczRuch::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/mecz-ruch');
-        CRUD::setEntityNameStrings('mecz ruchu', 'mecze ruchu');
+        CRUD::setEntityNameStrings('Mecz ruchu', 'Mecze ruchu');
     }
 
     /**

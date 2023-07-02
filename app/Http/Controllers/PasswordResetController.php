@@ -47,27 +47,28 @@ class PasswordResetController extends Controller
     public function showResetPasswordForm(Request $request)
     {
         $token = $request->input('token');
-
+        //dd($token);
         return view('reset-password', ['token' => $token]);
     }
 
     public function resetPassword(Request $request)
-    {
+    {   //dd('i got here');
         $token = $request->input('token');
         $newPassword = $request->input('new_password');
 
         // Validate token
         $passwordReset = DB::table('password_resets')->where('token', $token)->first();
-
+        //dump($passwordReset);
         if (!$passwordReset) {
             return response()->json(['message' => 'Invalid token.'], 400);
         }
 
         // Reset the user's password
         $user = User2::where('email', $passwordReset->email)->first();
-        $user->password = bcrypt($newPassword);
+        //dump($user);
+        $user->password = md5($newPassword);
         $user->save();
-
+        //dd($user);
         // Delete the token
         DB::table('password_resets')->where('token', $token)->delete();
 

@@ -40,9 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'user2' => [  // new custom guard for User2 model
+        'users2' => [  // new custom guard for User2 model
             'driver' => 'session',
-            'provider' => 'user2s',
+            'provider' => 'users2',
         ],
     ],
 
@@ -68,7 +68,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'user2s' => [  // new custom provider for User2 model
+        'users2' => [  // new custom provider for User2 model
             'driver' => 'eloquent',
             'model' => \App\Models\User2::class,
         ],
@@ -105,8 +105,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'user2s'=>[
-            'provider' => 'user2s',
+        'users2'=>[
+            'provider' => 'users2',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

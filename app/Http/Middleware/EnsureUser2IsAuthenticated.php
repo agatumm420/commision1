@@ -8,7 +8,7 @@ class EnsureUser2IsAuthenticated
 {
 public function handle($request, Closure $next)
 {
-if (!Auth::guard('user2')->check()) {
+if (!Auth::guard('users2')->check()) {
 // Redirect to login or somewhere else if the user is not authenticated
 return redirect('/');
 }

@@ -25,7 +25,7 @@ class ResetPasswordMail extends Mailable
     {
         $smtpSettings = Config::get('mail.mailers.smtp');
         unset($smtpSettings['password']); // Avoid logging sensitive data
-        dump('SMTP settings: ', $smtpSettings);
+
         Log::info('SMTP settings: ', $smtpSettings);
         return $this->from('support@wyjazdowo.eu')
             ->subject('Resetowanie Hasła')

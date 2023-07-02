@@ -27,7 +27,7 @@
 
 <body>
 <div class="reset-container">
-    <form action="{{ url('/api/reset-password') }}" method="post" class="reset-form">
+    <form action="{{ url('/reset-password') }}" method="post" class="reset-form">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="mb-3">

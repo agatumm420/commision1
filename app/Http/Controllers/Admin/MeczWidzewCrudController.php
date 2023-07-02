@@ -28,7 +28,7 @@ class MeczWidzewCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MeczWidzew::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/mecz-widzew');
-        CRUD::setEntityNameStrings('mecz widzewa', 'mecze widzewa');
+        CRUD::setEntityNameStrings('Mecz widzewa', 'Mecze widzewa');
     }
 
     /**
